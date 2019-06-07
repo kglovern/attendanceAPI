@@ -14,6 +14,9 @@ class App {
   }
 
   private configApp(): void {
+    /* Configure ENV variables */
+    require('dotenv').config();
+
     /* Configure bodyparser middleware for JSON requests */
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
