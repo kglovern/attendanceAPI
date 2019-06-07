@@ -3,6 +3,7 @@ import {Loggifyr, LogLevel} from '../Utils/Loggifyr';
 import {AttendRouter} from './AttendsRoutes';
 import {ClassOfferingRouter} from './ClassOfferingRoutes';
 import {EventsRouter} from './EventsRoutes';
+import {LoginRouter} from './LoginRoutes';
 import {StudentRouter} from './StudentRoutes';
 
 const router: Router = Router();
@@ -41,6 +42,12 @@ router.use('/attend', AttendRouter);
  * URL Prefix: /events
  */
 router.use('/events', EventsRouter);
+
+/**
+ * Imports route for authentication
+ * URL Prefix: /login
+ */
+router.use('/login', LoginRouter);
 
 /**
  * Catch-all route - If it doesn't match the above, throw a 405

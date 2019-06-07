@@ -35,7 +35,7 @@ export class AuthenticationService {
       } else {
         const result = await compare(credentials.password, user.password);
         if (result) {
-            const token = this.createToken(user);
+            const token = await this.createToken(user);
             return {
                 authenticated: true,
                 message: 'Successfully logged in',
@@ -50,10 +50,10 @@ export class AuthenticationService {
                 message: 'Invalid Password',
             };
         }
-      };
-
+      }
   }
   private async createToken(user: User): Promise<string> {
+      // TODO: This should probably return a role vs the username when this is successful
       const payload: TokenPayload = {
           id: user.id,
           username: user.username,
