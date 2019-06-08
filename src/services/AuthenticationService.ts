@@ -21,7 +21,26 @@ export interface AuthenticationResponse {
 
 export class AuthenticationService {
     public static async isAuthorized(req: Request, res: Response, next: NextFunction) {
-        console.log('middleware');
+        const token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+        if (token) {
+            const result = await jwt.verify(token, process.env.JWT_SECRET);
+            console.log(result);
+            if (result) {
+                // TODO: Add required info to request
+                next();
+            }
+            return res.status(401)
+                .send({
+                   error: true,
+                   message: 'Unable to validate token',
+                });
+        }
+        return res.status(401)
+            .send({
+               error: true,
+                message: 'Must be authenticated to use this route',
+            });
     }
   public async login(credentials: CredentialSet): Promise<AuthenticationResponse> {
       const user = await User.query()
@@ -53,7 +72,7 @@ export class AuthenticationService {
       }
   }
   private async createToken(user: User): Promise<string> {
-      // TODO: This should probably return a role vs the username when this is successful
+      // TODO: This should probably return a role vs the username when roles are implemented
       const payload: TokenPayload = {
           id: user.id,
           username: user.username,
