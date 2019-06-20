@@ -4,7 +4,7 @@ import {Loggifyr, LogLevel} from '../Utils/Loggifyr';
 
 export class EventController {
     public static async getRecentEvents(req: Request, res: Response): Promise<Response> {
-        const limit = req.params.limit;
+        const { limit } = req.query || 5;
         try {
             const events = await Event
                 .query()
