@@ -1,4 +1,5 @@
 import * as bodyParser from 'body-parser';
+import cors from 'cors';
 import express from 'express';
 import Knex from 'knex';
 import { Model } from 'objection';
@@ -13,7 +14,7 @@ class App {
     this.configRoutes();
   }
 
-  private configApp(): void {
+  private async configApp(): Promise<void> {
     /* Configure ENV variables */
     require('dotenv').config();
 
@@ -21,11 +22,13 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
 
+    this.app.use(cors());
+
     /* Add persistence layer */
     const dbConfig = require('../knexfile');
     const knex = Knex(dbConfig.development);
     // Build database if it doesn't exist
-    knex.migrate.latest();
+    await knex.migrate.latest();
     Model.knex(knex);
   }
 

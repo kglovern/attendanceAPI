@@ -5,7 +5,7 @@ const router: Router = Router();
 
 router.get('/', AttendController.getAllAttends);
 
-router.get('/:id', AttendController.getAttendsByUPC);
+router.get('/:barcode', AttendController.getAttendsByUPC);
 
 router.get('/:day/:month/:year', AttendController.getAttendsByDate);
 
