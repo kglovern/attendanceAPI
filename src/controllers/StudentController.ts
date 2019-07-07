@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import Student from '../models/StudentModel';
-import {Loggifyr, LogLevel} from '../Utils/Loggifyr';
+import {Loggifyr, LogLevel} from '../services/Loggifyr';
 
 export class StudentController {
     public static async getAllStudents(req: Request, res: Response): Promise<Response> {

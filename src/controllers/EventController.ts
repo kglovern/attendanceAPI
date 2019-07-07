@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import Event from '../models/EventModel';
-import {Loggifyr, LogLevel} from '../Utils/Loggifyr';
+import {Loggifyr, LogLevel} from '../services/Loggifyr';
 
 export class EventController {
     public static async getRecentEvents(req: Request, res: Response): Promise<Response> {

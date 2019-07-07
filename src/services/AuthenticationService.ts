@@ -61,6 +61,7 @@ export class AuthenticationService {
                 payload: {
                     id: user.id,
                     token,
+                    user: user.username,
                 },
             };
         } else {

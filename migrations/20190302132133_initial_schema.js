@@ -6,7 +6,7 @@ exports.up = function (knex, Promise) {
             table.text('firstName').notNull();
             table.text('lastName').notNull();
             table.text('userId');
-            table.integer('text');
+            table.text('studentNumber');
             table.text('studentUPC').notNull()
         })
         .createTable('ClassOffering', table => {

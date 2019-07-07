@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 import ClassOffering from '../models/ClassOfferingModel';
 import ClassOfferingStudent from '../models/ClassOfferingStudentModel';
-import {Loggifyr, LogLevel} from '../Utils/Loggifyr';
+import {Loggifyr, LogLevel} from '../services/Loggifyr';
 
 export class ClassOfferingController {
 

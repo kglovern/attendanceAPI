@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { IAPIResponse } from '../interfaces/IAPIResponse';
 import Attend from '../models/AttendModel';
 import { AttendanceService } from '../services/AttendanceService';
-import { Loggifyr, LogLevel } from '../Utils/Loggifyr';
+import { Loggifyr, LogLevel } from '../services/Loggifyr';
 
 export class AttendController {
     public static async getAllAttends(req: Request, res: Response): Promise<Response> {
@@ -48,11 +48,12 @@ export class AttendController {
     public static async getAttendsByUPC(req: Request, res: Response): Promise<Response> {
         const { limit, start } = req.query;
         const { barcode } = req.params;
-        const response: IAPIResponse = await new AttendanceService().getAttendancesByUPC(barcode, limit, start);
+        const response: IAPIResponse = await AttendanceService.getAttendancesByUPC(barcode, limit, start);
         return res.status(response.code).send(response);
     }
 
     public static async getAttendsByDate(req: Request, res: Response): Promise<Response> {
+        const { day, month, year } = req.params;
         return res.sendStatus(501);
     }
 }

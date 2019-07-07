@@ -1,4 +1,4 @@
-import {Model} from 'objection';
+import { Model } from 'objection';
 
 export default class User extends Model {
     public static tableName: string = 'User';

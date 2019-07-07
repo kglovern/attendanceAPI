@@ -1,5 +1,5 @@
 import {Request, Response, Router} from 'express';
-import {Loggifyr, LogLevel} from '../Utils/Loggifyr';
+import {Loggifyr, LogLevel} from '../services/Loggifyr';
 import {AttendRouter} from './AttendsRoutes';
 import {ClassOfferingRouter} from './ClassOfferingRoutes';
 import {EventsRouter} from './EventsRoutes';
