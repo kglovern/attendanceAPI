@@ -21,7 +21,7 @@
     "@types/knex": "^0.15.2",
     "@types/sqlite3": "^3.1.4",
     "@types/styled-components": "^4.1.14",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
